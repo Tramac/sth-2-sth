@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+  <head>
+    <title>404 - Sth2Sth</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Icons -->
+    <link href="{{url_for('static', filename='js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static', filename='js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet"/>
+    <!-- CSS Files -->
+    <link href="{{url_for('static', filename='css/argon-dashboard.css')}}" rel="stylesheet"/>
+    <style>
+      .copyleft {
+        display: inline-block;
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  {% block content %}
+  <body class="">
+    <div class="main-content">
+      <!-- Navbar -->
+      <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+          <!-- Brand -->
+          <span
+            class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+            ><a href="/" class="mb-0 text-sm  font-weight-bold text-white">Something to Something</a></span>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <!-- Header -->
+      <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body"></div>
+        </div>
+      </div>
+      <div class="container-fluid mt--7">
+        <div class="row justify-content-md-center">
+          <div class="col-xl-8 mb-5 mb-xl-0">
+            <div class="card bg-gradient-default shadow">
+              <div class="card-body">
+                <h1 class="text-white text-center">404 Not Found</h1>
+                <p class="text-white text-center">
+                  <br />
+                  <br />
+                  Go find another Page or Go back to
+                  <b><a href="/" class="text-white">Home</a></b>
+                </p>
+              </div>
+            </div>
+          </div>
+          {% endblock content %}
+        </div>
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="row align-items-center justify-content-xl-between">
+            <div class="col-xl-6">
+              <div class="copyright text-center text-xl-left text-muted">
+                &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                <li class="nav-item">
+                  <a href="https://github.com/Tramac" class="nav-link" target="_blank"><span class="copyleft">&copy;</span> 2022 Copylefted by <b>Tramac</b></a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://github.com/Tramac/sth-2-sth" class="nav-link" target="_blank">GitHub</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

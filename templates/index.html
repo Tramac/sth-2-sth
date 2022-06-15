@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sth2Sth</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{{url_for('static', filename='js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
+  <link href="{{url_for('static', filename='js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{{url_for('static', filename='css/argon-dashboard.css')}}" rel="stylesheet" />
+  <style>.copyleft {display:inline-block; transform: rotate(180deg);}</style>
+</head>
+{% block content %}
+<body class="">
+  <div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <span class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"><a href="/" class="mb-0 text-sm font-weight-bold text-white">Something to Something</a></span>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+      <div class="container-fluid">
+        <div class="header-body">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <!-- pick picture -->
+        <div class="col-xl-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1"><i class="ni ni-folder-17"></i> Upload</h6>
+                  <h2 class="mb-0">
+                    {% if page_status == 2 %}
+                      选择视频文件
+                    {% else %}
+                      已选视频文件
+                    {% endif %}
+                    </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="box-body">
+                <div class="form-group">
+                  <form action="/search" method="post" enctype="multipart/form-data">
+                  <div class="text-center">
+                    {% if page_status == 2 %}
+                      <input type="file" required name="video" accept="video/*" style="margin-bottom: 30px; margin-top: 20px;">
+                      <button type="submit" class="btn btn-primary my-4" value="Submit"><i class="ni ni-send"></i> 查询</button>
+                      <button type="reset"  class="btn btn-danger my-4" value="Reset"><i class="ni ni-fat-remove"></i> 重置</button>
+                    {% else %}
+                    {% for query in querys %}
+                    <div class="row">
+                      <div class="col-xl-12">
+                        <video src="{{query}}" autoplay="autoplay" width="300" loop="loop"></video>
+                    </div>
+                    </div>
+                    {% endfor %}
+                      <a href="/" class="btn btn-primary my-4"><i class="ni ni-button-power"></i> 重新查询</a>
+                    {% endif %}
+                </div>
+                </form>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div><br>
+          <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">索引量</h5>
+                      <span class="h2 font-weight-bold mb-0">{{ count }} Videos</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                        <i class="fas fa-chart-bar"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% if page_status == 1 %}
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Best Result</h5>
+                      <span class="h2 font-weight-bold mb-0">{{ nearest }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                        <i class="ni ni-chart-bar-32"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+        </div>
+
+        <!--end of pick picture -->
+
+        <div class="col-xl-8 mb-5 mb-xl-0">
+                  <div class="card bg-gradient-default shadow">
+                    <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-light ls-1 mb-2"><i class="ni ni-tv-2"></i> Result</h6>
+                  <h2 class="text-white mb-0">检索结果</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" {% if page_status == 2 %} style="height: 350px" {% endif %}>
+                {% if page_status == 2 %}
+                  <p class="text-white"><b>Sth2Sth</b> aims to:<br>  - video to video<br>  - image to video<br>  - image to image<br>  - text to image...<br><br><i class="fas fa-hand-point-right"></i> <b><a target="_blank" href="https://github.com/Tramac/sth-2-sth/issues/new">Github Open Issue</a></b><br>
+                {% else %}
+                <div class="table-responsive">
+                <table class="table align-items-center table-flush text-white">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Video</th>
+                      <th scope="col">L2 Dist</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% set count = namespace(value=1) %}
+                      {% for (video_url, score) in recalls %}
+                        <tr>
+                          <td>{{ count.value }}</td>
+                          {% set count.value = count.value + 1 %}
+                          <!--td><video src="{{video_path}}" width="300"></video></td-->
+                          <td>{{video_url}}</td>
+                          <td>{{score}}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+        </div>
+        {% endblock content %}
+      </div>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="row align-items-center justify-content-xl-between">
+          <div class="col-xl-6">
+            <div class="copyright text-center text-xl-left text-muted">
+              &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+              <li class="nav-item">
+                <a href="https://github.com/Tramac" class="nav-link" target="_blank"><span class="copyleft">&copy;</span> 2022 Copylefted by <b>Tramac</b></a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/Tramac/sth-2-sth" class="nav-link" target="_blank">GitHub</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

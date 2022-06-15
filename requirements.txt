@@ -1,0 +1,5 @@
+Flask==1.1.2
+Pillow==8.0.1
+einops==0.4.1
+configparser==5.2.0
+annoy==1.17.0
