@@ -7,7 +7,7 @@
 
 ## 设计思路
 
-<p align="center"><img width="100%" src="./docs/Sth2Sth_Flow.png" /></p>
+<p align="center"><img width="60%" src="./docs/Sth2Sth_Flow.png" /></p>
 
 系统设计主要包括两个部分：
 
@@ -16,25 +16,25 @@
 
 ## Demo展示
 
-<p align="center"><img width="100%" src="./docs/Sth2Sth_Flow_Demo.jpg" /></p>
+<p align="center"><img width="100%" src="./docs/Sth2Sth_Demo." /></p>
 
 ## 快速开始
 
-### 安装依赖
+- **安装依赖**
 
 ```pip3 install -r requirements.txt```
 
-### 启动服务
+- **启动服务**
 
 ```python3 web_server.py```
 
-### 快速体验
+- **快速体验**
 
 ```localhost:8991```
 
 ## Note
 
-由于本人前端开发能力有限，在实现系统时很多地方设计并不合理，希望可以遇到一个对前端比较熟悉的小伙伴，如果对该项目也有兴趣可以一起进行完善～
+由于本人前端开发能力有限，在实现系统时很多地方设计并不是很合理，希望可以遇到一个对前端比较熟悉的小伙伴，如果对该项目也有兴趣可以一起进行完善～
 
 感兴趣的小伙伴可以在issue里留言哦～
 
@@ -57,5 +57,6 @@
 
 [python-image]: https://img.shields.io/badge/Python-3.x-ff69b4.svg
 [python-url]: https://www.python.org/
+[lic-image]: https://img.shields.io/badge/Apache-2.0-blue.svg
 [lic-url]: https://github.com/Tramac/sth-2-sth/blob/main/LICENSE
 
