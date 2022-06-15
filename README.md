@@ -24,6 +24,12 @@
 
 ```pip3 install -r requirements.txt```
 
+- **下载索引、权重、工具**
+
+下载地址：[GoogleDrive](https://drive.google.com/drive/folders/1vaTO87uhSnOpEbN6Jl_bY0bZOfnNfKbr)
+
+从GoogleDrive下载lib文件夹下对应文件，放置于所对应的文件夹下。
+
 - **启动服务**
 
 ```python3 web_server.py```
