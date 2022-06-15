@@ -16,7 +16,7 @@
 
 ## Demo展示
 
-<p align="center"><img width="100%" src="./docs/Sth2Sth_Demo." /></p>
+<p align="center"><img width="100%" src="./docs/Sth2Sth_Demo.png" /></p>
 
 ## 快速开始
 
